@@ -54,3 +54,12 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
+
+const Url='https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/sspw-dev-test'
+$(".btn-reset").click(function () {
+    const data={email:'test.user2@testdomain.local',enduser:'tuser2'};
+    $.ajax({
+        url: Url,
+        type:"POST"
+    })
+});
