@@ -60,6 +60,8 @@ $(".btn-reset").click(function () {
     const data={email:'test.user2@testdomain.local',enduser:'tuser2'};
     $.ajax({
         url: Url,
-        type:"POST"
+        type:"POST",
+        data: data,
+        dataType: JSON
     })
 });
