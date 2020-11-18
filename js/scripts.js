@@ -55,7 +55,6 @@
     $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
 
-const Url=''
 $(".btn-reset").click(function () {
     var xmlhttp = new XMLHttpRequest();   
     xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email=test.user3@testdomain.local&enduser=tuser3', true);
