@@ -56,12 +56,13 @@
 })(jQuery); // End of use strict
 
 $(".btn-reset").click(function () {
-    var xmlhttp = new XMLHttpRequest();   
-    xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email=test.user3@testdomain.local&enduser=tuser3', true);
-    xmlhttp.send();
-
-    var obj=JSON.parse(xmlhttp.responseText);
-    document.getElementById("id01").innerHTML = obj;
+    location.replace("ride.html")
 });
 
 
+var xmlhttp = new XMLHttpRequest();   
+xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email=test.user3@testdomain.local&enduser=tuser3', true);
+xmlhttp.send();
+
+var obj=JSON.parse(xmlhttp.responseText);
+document.getElementById("id01").innerHTML = obj;
