@@ -67,7 +67,7 @@
                         <div class=".bg-white text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <button class="btn-reset" type="button">Reset My Password</button>
+                                    <button class="btn-reset" type="button" onclick="redirector">Reset My Password</button>
                                     <p class="mb-0 text-black-50"> 
                                     </p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
@@ -170,6 +170,11 @@
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
+        <script>
+            function redirector() {
+              location.replace("https://www.w3schools.com")
+            }
+        </script>
         <script src="js/scripts.js"></script>
     </body>
 </html>
