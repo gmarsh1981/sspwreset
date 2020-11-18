@@ -3,7 +3,7 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
     */
-    (function ($) {
+(function ($) {
     "use strict"; // Start of use strict
 
     // Smooth scrolling using jQuery easing
@@ -22,7 +22,7 @@
                     {
                         scrollTop: target.offset().top - 70,
                     },
-                    1000,
+                    1000,View:Toggle Integrated Terminal
                     "easeInOutExpo"
                 );
                 return false;
@@ -55,13 +55,36 @@
     $(window).scroll(navbarCollapse);
 })(jQuery); // End of use strict
 
-const Url='https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/sspw-dev-test'
+const Url=''
 $(".btn-reset").click(function () {
     const data={email:'test.user2@testdomain.local',enduser:'tuser2'};
     $.ajax({
         url: Url,
         type:"POST",
         data: data,
-        dataType: JSON
+        success: function(result){
+            console.log(result)
+        },
+        error:function(error){
+            console.log('Error ${error}')
+        }
     })
+});
+
+$.ajax({
+    method: 'POST',
+    url: _config.api.invokeUrl,
+    data: JSON.stringify({
+        PickupLocation: {
+            email: 'test.user2@testdomain.local',
+            enduser: 'tuser2'
+        }
+    }),
+    contentType: 'application/json',
+    success: completeRequest,
+    error: function ajaxError(jqXHR, textStatus, errorThrown) {
+        console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
+        console.error('Response: ', jqXHR.responseText);
+        alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
+    }
 });
