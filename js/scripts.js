@@ -57,34 +57,12 @@
 
 const Url=''
 $(".btn-reset").click(function () {
-    const data={email:'test.user2@testdomain.local',enduser:'tuser2'};
-    $.ajax({
-        url: Url,
-        type:"POST",
-        data: data,
-        success: function(result){
-            console.log(result)
-        },
-        error:function(error){
-            console.log('Error ${error}')
-        }
-    })
+    var xmlhttp = new XMLHttpRequest();   
+    xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email=test.user3@testdomain.local&enduser=tuser3', true);
+    xmlhttp.send();
+
+    var obj=JSON.parse(xmlhttp.responseText);
+    document.getElementById("id01").innerHTML = obj;
 });
 
-$.ajax({
-    method: 'POST',
-    url: _config.api.invokeUrl,
-    data: JSON.stringify({
-        PickupLocation: {
-            email: 'test.user2@testdomain.local',
-            enduser: 'tuser2'
-        }
-    }),
-    contentType: 'application/json',
-    success: completeRequest,
-    error: function ajaxError(jqXHR, textStatus, errorThrown) {
-        console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
-        console.error('Response: ', jqXHR.responseText);
-        alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
-    }
-});
+
