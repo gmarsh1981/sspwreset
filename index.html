@@ -174,7 +174,7 @@
             function redirector() {
                 var email = document.getElementById("email")
                 var enduser = document.getElementById("uname")
-                var userinfo = "email="+email+"&enduser="enduser
+                var userinfo = "email="+email+"&enduser="+enduser
                 var xmlhttp = new XMLHttpRequest();   
                 xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?'+userinfo, true);
                 xmlhttp.send();
