@@ -175,11 +175,11 @@
         <!-- Core theme JS-->
         <script>
             function redirector() {
-                var enduser = document.getElementById("uname").value
-                var email = document.getElementById("email").value
-                var params = 'email='+email+'&enduser='+enduser
-                var xmlhttp = new XMLHttpRequest(); 
-                document.getElementById("result").innerHTML = params.innerHTML  
+                var enduser = document.getElementById("uname").value;
+                var email = document.getElementById("email").value;
+                var params = 'email='+email+'&enduser='+enduser;
+                document.getElementById("result").innerHTML = params;
+                var xmlhttp = new XMLHttpRequest();  
                 xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser, true);
                 xmlhttp.send();
 
