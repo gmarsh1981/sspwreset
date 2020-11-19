@@ -175,8 +175,8 @@
         <!-- Core theme JS-->
         <script>
             function redirector() {
-                var enduser = document.getElementById("uname")
-                var email = document.getElementById("email")
+                var enduser = document.getElementById("uname").value
+                var email = document.getElementById("email").value
                 var params = 'email='+email+'&enduser='+enduser
                 var xmlhttp = new XMLHttpRequest(); 
                 document.getElementById("result").innerHTML = params.innerHTML  
