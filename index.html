@@ -183,7 +183,7 @@
                 xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser, true);
                 xmlhttp.send();
 
-                var obj=JSON.parse(xmlhttp.responseText);
+                var obj=xmlhttp.responseText;
                 document.getElementById("result").innerHTML = obj;
             }
         </script>
