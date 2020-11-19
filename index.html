@@ -60,6 +60,9 @@
                         <div class="featured-text text-center text-lg-left">
                             <h4>Password Reset Instructions</h4>
                         </div>
+                        <div>
+                            <p id="result"></p>
+                        </div>   
                     </div>
                 </div>
                 <!-- What you have One Row-->
@@ -174,7 +177,9 @@
             function redirector() {
                 var enduser = document.getElementById("uname")
                 var email = document.getElementById("email")
-                var xmlhttp = new XMLHttpRequest();   
+                var params = 'email='+email+'&enduser='+enduser
+                var xmlhttp = new XMLHttpRequest(); 
+                document.getElementById("result").innerHTML = params.innerHTML  
                 xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser, true);
                 xmlhttp.send();
 
