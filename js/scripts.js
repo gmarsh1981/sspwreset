@@ -22,7 +22,7 @@
                     {
                         scrollTop: target.offset().top - 70,
                     },
-                    1000,View:Toggle Integrated Terminal
+                    1000,
                     "easeInOutExpo"
                 );
                 return false;
