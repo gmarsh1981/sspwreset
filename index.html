@@ -175,18 +175,28 @@
         <!-- Core theme JS-->
         <script>
             function redirector() {
+                function redirector() { 
+                document.getElementById("result").innerHTML = "Sending Request...\nPlease Wait.";
                 var enduser = document.getElementById("uname").value
                 var email = document.getElementById("email").value
-                var params = 'email='+email+'&enduser='+enduser
-                //document.getElementById("result").innerHTML = params
+             
+                function success() {
+                    var data = JSON.parse(this.responseText); //parse the string to JSON
+                    console.log(data);
+                    document.getElementById("result").innerHTML = "Information has been successfully submitted."
+                }
 
-                var xmlhttp = new XMLHttpRequest();  
-                xmlhttp.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser, true);
-                xmlhttp.responseType = 'text';
-                xmlhttp.send();
+                // function to handle error
+                function error(err) {
+                    console.log('Request did not really work out', err); //error details will be in the "err" object
+                    document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
+                }
 
-                document.getElementById("result").innerHTML = xmlhttp.responseText;
-            }
+                var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
+                xhr.onload = success; // call success function if request is successful
+                xhr.onerror = error;  // call error function if request failed
+                xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
+                xhr.send(); // send the request to the server.
         </script>
         <script src="js/scripts.js"></script>
     </body>
