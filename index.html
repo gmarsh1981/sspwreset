@@ -59,17 +59,17 @@
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                             <h4>Password Reset Instructions</h4>
-                        </div>
-                        <div>
-                            <p id="result"></p>
-                        </div>   
+                        </div> 
                     </div>
                 </div>
                 <!-- What you have One Row-->
+                <div>
+                    <p id="result"></p>
+                </div> 
                 <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
                         <div class=".bg-white text-center h-100 project">
                             <div class="d-flex h-100">
-                               
+                                 
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
                                     <button class="btn-reset" type="button" onclick="redirector()">Reset My Password</button>
                                     <p class="mb-0 text-black-50"> 
@@ -197,7 +197,7 @@
                 xhr.onerror = error;  // call error function if request failed
                 xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
                 xhr.send(); // send the request to the server.
-            } 
+            }
         </script>
         <script src="js/scripts.js"></script>
     </body>
