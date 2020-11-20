@@ -69,6 +69,7 @@
                 <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
                         <div class=".bg-white text-center h-100 project">
                             <div class="d-flex h-100">
+                               
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
                                     <button class="btn-reset" type="button" onclick="redirector()">Reset My Password</button>
                                     <p class="mb-0 text-black-50"> 
@@ -174,9 +175,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
         <script>
-            function redirector() {
-                function redirector() { 
-                document.getElementById("result").innerHTML = "Sending Request...\nPlease Wait.";
+            function redirector() { 
+                document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 20 seconds, Please Wait.";
                 var enduser = document.getElementById("uname").value
                 var email = document.getElementById("email").value
              
@@ -197,6 +197,7 @@
                 xhr.onerror = error;  // call error function if request failed
                 xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
                 xhr.send(); // send the request to the server.
+            } 
         </script>
         <script src="js/scripts.js"></script>
     </body>
