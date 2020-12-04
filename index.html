@@ -184,7 +184,7 @@
                 function success() {
                     var data = JSON.parse(this.responseText); //parse the string to JSON
                     console.log(data);
-                    if (data.includes('timed out')){
+                    if (this.responseText.includes("timed out")){
                         make_call()
                     }else{
                         document.getElementById("result").innerHTML = "Information has been successfully submitted."
