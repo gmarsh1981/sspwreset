@@ -179,11 +179,16 @@
                 document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 20 seconds, Please Wait.";
                 var enduser = document.getElementById("uname").value
                 var email = document.getElementById("email").value
-             
+                make_call()
+
                 function success() {
                     var data = JSON.parse(this.responseText); //parse the string to JSON
                     console.log(data);
-                    document.getElementById("result").innerHTML = "Information has been successfully submitted."
+                    if (data.includes('timed out')){
+                        make_call()
+                    }else{
+                        document.getElementById("result").innerHTML = "Information has been successfully submitted."
+                    }
                 }
 
                 // function to handle error
@@ -192,11 +197,13 @@
                     document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
                 }
 
-                var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
-                xhr.onload = success; // call success function if request is successful
-                xhr.onerror = error;  // call error function if request failed
-                xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
-                xhr.send(); // send the request to the server.
+                function make_call(){
+                    var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
+                    xhr.onload = success; // call success function if request is successful
+                    xhr.onerror = error;  // call error function if request failed
+                    xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
+                    xhr.send(); // send the request to the server.
+                }
             }
         </script>
         <script src="js/scripts.js"></script>
