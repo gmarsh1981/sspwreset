@@ -186,7 +186,10 @@
                     console.log(data);
                     if (this.responseText.includes("timed out")){
                         make_call()
-                    }else{
+                    }else if (this.responseText.includes("User not found")){
+                        document.getElementById("result").innerHTML = "User not found. Please check username and email and try again."
+                    }
+                    else{
                         document.getElementById("result").innerHTML = "Information has been successfully submitted."
                     }
                 }
