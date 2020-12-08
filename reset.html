@@ -22,7 +22,7 @@
             <div class="container d-flex h-100 align-items-center">
                 <div class="mx-auto text-center">
                     <br><br><br><br><br><br><br><br>
-                    <input class="input-primary"  type="text" id="uname" name="uname" value = "">
+                    <input class="input-primary"  type="text" id="pw" name="pw" value = "">
                     <button onclick="copyFunction()">Copy</button>
                     <br><br><br><br>
                     <button class="btn-reset" type="button" onclick="redirector()">Get Password</button>
@@ -45,9 +45,12 @@
         <!-- Core theme JS-->
         <script>
             function redirector() { 
-                var token = window.location.search
+                var tokenURL = window.location.search
+                urlParams = new URLSearchParams(tokenURL)
+                var token = urlParams.get('token')
                 console.log(token)
-                
+
+                make_call(token)
 
                 function success() {
                     var data = JSON.parse(this.responseText); //parse the string to JSON
@@ -55,10 +58,10 @@
                     if (this.responseText.includes("timed out")){
                         make_call()
                     }else if (this.responseText.includes("User not found")){
-                        document.getElementById("result").innerHTML = "User not found. Please check username and email and try again. If information is correct please contact NOC."
+                        document.getElementById("pw").innerHTML = token
                     }
                     else{
-                        document.getElementById("result").innerHTML = "Information has been successfully submitted."
+                        document.getElementById("pw").innerHTML = token
                     }
                 }
 
@@ -68,11 +71,11 @@
                     document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
                 }
 
-                function make_call(){
+                function make_call(token){
                     var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
                     xhr.onload = success; // call success function if request is successful
                     xhr.onerror = error;  // call error function if request failed
-                    xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
+                    xhr.open('POST', 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1?token='+token); // open a POST request
                     xhr.send(); // send the request to the server.
                 }
             }
