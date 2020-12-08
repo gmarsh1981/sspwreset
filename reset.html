@@ -58,10 +58,10 @@
                     if (this.responseText.includes("timed out")){
                         make_call()
                     }else if (this.responseText.includes("User not found")){
-                        document.getElementById("pw").innerHTML = token
+                        document.getElementById("pw").value = token
                     }
                     else{
-                        document.getElementById("pw").innerHTML = token
+                        document.getElementById("pw").value = token
                     }
                 }
 
