@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Aloy Password Reset</title>
+        <link rel="icon" type="image/x-icon" href="img/psn.jpg" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="container d-flex h-100 align-items-center">
+                <div class="mx-auto text-center">
+                    <br><br><br><br><br><br><br><br>
+                    <input class="input-primary"  type="text" id="uname" name="uname" value = "">
+                    <button onclick="copyFunction()">Copy</button>
+                    <br><br><br><br>
+                    <button class="btn-reset" type="button" onclick="redirector()">Get Password</button>
+                </div>
+                <!--<h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
+                    <a class="btn btn-primary js-scroll-trigger" href="#chooseItems">Get Started</a>-->
+                </div>
+            </div>
+        </header> 
+        
+        
+     
+     
+        <footer class="footer  small text-center text-white-50"><div class="container">Sony Playstation</div></footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        <script>
+            function redirector() { 
+                document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 20 seconds, Please Wait.";
+                var enduser = document.getElementById("uname").value
+                var email = document.getElementById("email").value
+                make_call()
+
+                function success() {
+                    var data = JSON.parse(this.responseText); //parse the string to JSON
+                    console.log(data);
+                    if (this.responseText.includes("timed out")){
+                        make_call()
+                    }else if (this.responseText.includes("User not found")){
+                        document.getElementById("result").innerHTML = "User not found. Please check username and email and try again. If information is correct please contact NOC."
+                    }
+                    else{
+                        document.getElementById("result").innerHTML = "Information has been successfully submitted."
+                    }
+                }
+
+                // function to handle error
+                function error(err) {
+                    console.log('Request did not really work out', err); //error details will be in the "err" object
+                    document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
+                }
+
+                function make_call(){
+                    var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
+                    xhr.onload = success; // call success function if request is successful
+                    xhr.onerror = error;  // call error function if request failed
+                    xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
+                    xhr.send(); // send the request to the server.
+                }
+            }
+        </script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
