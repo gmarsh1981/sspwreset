@@ -179,13 +179,19 @@
                 document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
                 var enduser = document.getElementById("uname").value
                 var email = document.getElementById("email").value
+                var attempt = 0 
                 make_call()
 
                 function success() {
                     var data = JSON.parse(this.responseText); //parse the string to JSON
                     console.log(data);
                     if (this.responseText.includes("timed out")){
-                        make_call()
+                        attempt = attempt + 1
+                        if (attempt < 5){ 
+                            make_call()
+                        }else{
+                            document.getElementById("result").innerHTML = "Reset Timed Out. Refresh page and please try again."
+                        }
                     }else if (this.responseText.includes("User not found")){
                         document.getElementById("result").innerHTML = "User not found. Please check username and email and try again. If information is correct please contact NOC."
                     }
