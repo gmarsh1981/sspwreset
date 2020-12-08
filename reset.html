@@ -27,9 +27,6 @@
                     <br><br><br><br>
                     <button class="btn-reset" type="button" onclick="redirector()">Get Password</button>
                 </div>
-                <!--<h2 class="text-white-50 mx-auto mt-2 mb-5"></h2>
-                    <a class="btn btn-primary js-scroll-trigger" href="#chooseItems">Get Started</a>-->
-                </div>
             </div>
         </header> 
         
@@ -44,6 +41,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
         <script>
+            function copyFunction() {
+                var copyText = document.getElementById("pw");
+                copyText.select();
+                copyText.setSelectionRange(0, 99999)
+                document.execCommand("copy");
+                alert("Copied Temp Password");
+            }
             function redirector() { 
                 var tokenURL = window.location.search
                 urlParams = new URLSearchParams(tokenURL)
@@ -65,7 +69,6 @@
                 // function to handle error
                 function error(err) {
                     console.log('Request did not really work out', err); //error details will be in the "err" object
-                    document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
                 }
 
                 function make_call(){
