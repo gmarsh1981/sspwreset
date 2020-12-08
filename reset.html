@@ -50,18 +50,15 @@
                 var token = urlParams.get('token')
                 console.log(token)
 
-                make_call(token)
+                make_call()
 
                 function success() {
                     var data = JSON.parse(this.responseText); //parse the string to JSON
                     console.log(data);
                     if (this.responseText.includes("timed out")){
                         make_call()
-                    }else if (this.responseText.includes("User not found")){
-                        document.getElementById("pw").value = token
-                    }
-                    else{
-                        document.getElementById("pw").value = token
+                    }else{
+                        document.getElementById("pw").value = data
                     }
                 }
 
@@ -71,7 +68,7 @@
                     document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
                 }
 
-                function make_call(token){
+                function make_call(){
                     var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
                     xhr.onload = success; // call success function if request is successful
                     xhr.onerror = error;  // call error function if request failed
