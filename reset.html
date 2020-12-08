@@ -46,10 +46,10 @@
                 copyText.select();
                 copyText.setSelectionRange(0, 99999)
                 document.execCommand("copy");
-                alert("Copied Temp Password");
-                location.replace = 'http://aloy.okta.com'
+                alert("Copied the text: " + copyText.value);
+                window.location.replace("http://aloy.okta.com")
             }
-            
+
             function redirector() { 
                 var tokenURL = window.location.search
                 urlParams = new URLSearchParams(tokenURL)
