@@ -47,6 +47,7 @@
                 copyText.setSelectionRange(0, 99999)
                 document.execCommand("copy");
                 alert("Copied Temp Password");
+                window.location.herf = 'http://aloy.okta.com'
             }
             function redirector() { 
                 var tokenURL = window.location.search
@@ -75,7 +76,7 @@
                     var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
                     xhr.onload = success; // call success function if request is successful
                     xhr.onerror = error;  // call error function if request failed
-                    xhr.open('GET', 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1?token=4HjJhjWAwWyXphdSOPFCPBdFICIL3qfPq6cSRk4YrDmXGLaP'); // open a POST request
+                    xhr.open('GET', 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1?token='+token); // open a POST request
                     xhr.send(); // send the request to the server.
                 }
             }
