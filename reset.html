@@ -46,9 +46,9 @@
         <script>
             function redirector() { 
                 document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 20 seconds, Please Wait.";
-                var enduser = document.getElementById("uname").value
-                var email = document.getElementById("email").value
-                make_call()
+                var token = window.location.search
+                console.log(token)
+                
 
                 function success() {
                     var data = JSON.parse(this.responseText); //parse the string to JSON
