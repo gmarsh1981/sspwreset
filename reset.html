@@ -63,6 +63,10 @@
                     console.log(data);
                     if (this.responseText.includes("timed out")){
                         make_call()
+                    }else if (this.responseText.includes("list index out of range")){
+                        alert("Token Expired. Please reset password again.");
+                        window.location.replace("https://master.d1wxu3v9t21ve4.amplifyapp.com/")
+
                     }else{
                         document.getElementById("pw").value = data
                     }
