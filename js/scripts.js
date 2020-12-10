@@ -3,6 +3,48 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
     */
+function redirectorWriteToken() { 
+    document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
+    var enduser = document.getElementById("uname").value
+    var email = document.getElementById("email").value
+    var api = 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='
+    var attempt = 0 
+    make_call()
+
+    function success() {
+        var data = JSON.parse(this.responseText); //parse the string to JSON
+        console.log(data);
+        if (this.responseText.includes("timed out")){
+            attempt = attempt + 1
+            if (attempt < 5){ 
+                make_call()
+            }else{
+                document.getElementById("result").innerHTML = "Reset Timed Out. Refresh page and please try again."
+            }
+        }else if (this.responseText.includes("User not found")){
+            document.getElementById("result").innerHTML = "User not found. Please check username and email and try again. If information is correct please contact NOC."
+        }
+        else{
+            document.getElementById("result").innerHTML = "Information has been successfully submitted."
+        }
+    }
+
+    // function to handle error
+    function error(err) {
+        console.log('Request did not really work out', err); //error details will be in the "err" object
+        document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
+    }
+
+    function make_call(){
+        var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
+        xhr.onload = success; // call success function if request is successful
+        xhr.onerror = error;  // call error function if request failed
+        xhr.open('POST', api+email+'&enduser='+enduser); // open a POST request
+        xhr.send(); // send the request to the server.
+    }
+}
+
+
 function copyFunction() {
     var copyText = document.getElementById("pw");
     copyText.select();
@@ -12,7 +54,7 @@ function copyFunction() {
     window.location.replace("http://aloy.okta.com")
 }
 
-function redirector() { 
+function redirectorReset() { 
     var tokenURL = window.location.search
     urlParams = new URLSearchParams(tokenURL)
     var token = urlParams.get('token')
