@@ -74,7 +74,7 @@ function redirectorReset() {
             window.location.replace("https://master.d1wxu3v9t21ve4.amplifyapp.com/")
         }else{
             document.getElementById("pw").value = data
-            document.getElementById("result").innerHTML = "Select copy, confirm that password is in your clipboard and enter temp password into Aloy Okta.";
+            document.getElementById("message").innerHTML = "Select copy, confirm that password is in your clipboard \nand enter temp password into Aloy Okta.";
         }
     }
 

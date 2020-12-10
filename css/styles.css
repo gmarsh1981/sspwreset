@@ -10401,3 +10401,9 @@ body {
 .footer {
   padding: .75rem 0;
 }
+
+/*my additions*/
+.message {
+  width: 50%;
+  margin: 0 auto
+}
