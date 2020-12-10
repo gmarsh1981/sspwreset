@@ -55,6 +55,7 @@ function copyFunction() {
 }
 
 function redirectorReset() { 
+    document.getElementById("message").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
     var tokenURL = window.location.search
     urlParams = new URLSearchParams(tokenURL)
     var token = urlParams.get('token')
@@ -71,9 +72,9 @@ function redirectorReset() {
         }else if (this.responseText.includes("list index out of range")){
             alert("Token Expired. Please reset password again.");
             window.location.replace("https://master.d1wxu3v9t21ve4.amplifyapp.com/")
-
         }else{
             document.getElementById("pw").value = data
+            document.getElementById("result").innerHTML = "Select copy, confirm that password is in your clipboard and enter temp password into Aloy Okta.";
         }
     }
 
