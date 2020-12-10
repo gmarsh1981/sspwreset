@@ -179,6 +179,7 @@
                 document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
                 var enduser = document.getElementById("uname").value
                 var email = document.getElementById("email").value
+                var api = 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='
                 var attempt = 0 
                 make_call()
 
@@ -210,7 +211,7 @@
                     var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
                     xhr.onload = success; // call success function if request is successful
                     xhr.onerror = error;  // call error function if request failed
-                    xhr.open('POST', 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='+email+'&enduser='+enduser); // open a POST request
+                    xhr.open('POST', api+email+'&enduser='+enduser); // open a POST request
                     xhr.send(); // send the request to the server.
                 }
             }

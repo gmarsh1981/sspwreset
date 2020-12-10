@@ -55,6 +55,7 @@
                 urlParams = new URLSearchParams(tokenURL)
                 var token = urlParams.get('token')
                 console.log(token)
+                var api = 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1?token='
 
                 make_call()
 
@@ -81,7 +82,7 @@
                     var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
                     xhr.onload = success; // call success function if request is successful
                     xhr.onerror = error;  // call error function if request failed
-                    xhr.open('GET', 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1?token='+token); // open a POST request
+                    xhr.open('GET', api+token); // open a POST request
                     xhr.send(); // send the request to the server.
                 }
             }
