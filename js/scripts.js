@@ -51,7 +51,7 @@ function copyFunction() {
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");
     alert("Copied the text: " + copyText.value);
-    window.location.replace("http://aloy.okta.com")
+    window.location.replace("https://google.com")
 }
 
 function redirectorReset() { 
