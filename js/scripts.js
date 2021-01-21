@@ -7,7 +7,7 @@ function redirectorWriteToken() {
     document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
     var enduser = document.getElementById("uname").value
     var email = document.getElementById("email").value
-    var api = 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken?email='
+    
     var attempt = 0 
     make_call()
 
@@ -39,7 +39,7 @@ function redirectorWriteToken() {
         var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
         xhr.onload = success; // call success function if request is successful
         xhr.onerror = error;  // call error function if request failed
-        xhr.open('POST', api+email+'&enduser='+enduser); // open a POST request
+        xhr.open('POST', creat_token_api+'?email='+email+'&enduser='+enduser); // open a POST request
         xhr.send(); // send the request to the server.
     }
 }
@@ -60,7 +60,6 @@ function redirectorReset() {
     urlParams = new URLSearchParams(tokenURL)
     var token = urlParams.get('token')
     console.log(token)
-    var api = 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1?token='
 
     make_call()
 
@@ -87,7 +86,7 @@ function redirectorReset() {
         var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
         xhr.onload = success; // call success function if request is successful
         xhr.onerror = error;  // call error function if request failed
-        xhr.open('GET', api+token); // open a POST request
+        xhr.open('GET', reset_api+'?token='+token); // open a POST request
         xhr.send(); // send the request to the server.
     }
 }
