@@ -1,2 +1,2 @@
-var reset_api = 'https://i3eaxdlh55.execute-api.us-west-2.amazonaws.com/default/navconeinfs-sspwreset-lambda1'
-var creat_token_api = 'https://cv5yg5kpu0.execute-api.us-west-2.amazonaws.com/default/navcorinfs-sspw-writeToken'
+var reset_api = 'https://9a6gel9ov2.execute-api.us-west-2.amazonaws.com/sspw-reset/sspw-resetPassword'
+var creat_token_api = 'https://ghzdw7m00e.execute-api.us-west-2.amazonaws.com/sspw-create/sspw-token-creation'
