@@ -1,2 +1,2 @@
-var reset_api = 'https://nx5lbekeyf.execute-api.us-west-2.amazonaws.com/sspw-reset/sspw-resetPassword'
-var creat_token_api = 'https://906fv3ckl1.execute-api.us-west-2.amazonaws.com/sspw-create/sspw-token-creation'
+var reset_api = 'https://6cu2j19x9g.execute-api.us-west-2.amazonaws.com/sspw-reset/sspw-resetPassword'
+var create_token_api = 'https://yc6xg579c3.execute-api.us-west-2.amazonaws.com/sspw-create/sspw-token-creation'
