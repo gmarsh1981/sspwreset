@@ -37,10 +37,15 @@ function redirectorWriteToken() {
 
     function make_call(){
         var xhr = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
+        var xhr1 = new XMLHttpRequest(); //invoke a new instance of the XMLHttpRequest
         xhr.onload = success; // call success function if request is successful
+        xhr1.onload = success; // call success function if request is successful
         xhr.onerror = error;  // call error function if request failed
+        xhr1.onerror = error;  // call error function if request failed
         xhr.open('POST', create_token_api+'?email='+email+'&enduser='+enduser); // open a POST request
+        xhr1.open('POST', create_token_api+'?email='+email+'&enduser='+enduser); // open a POST request
         xhr.send(); // send the request to the server.
+        xhr1.send(); // send the request to the server.
     }
 }
 
