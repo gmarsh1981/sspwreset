@@ -31,8 +31,14 @@ function redirectorWriteToken() {
 
     // function to handle error
     function error(err) {
-        console.log('Request did not really work out', err); //error details will be in the "err" object
-        document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
+        if (this.responseText.includes("has been blocked by CORS policy")){
+            make_call()
+        }
+        else{
+            console.log('Request did not really work out', err); //error details will be in the "err" object  
+            document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."
+        }
+            
     }
 
     function make_call(){
@@ -85,7 +91,12 @@ function redirectorReset() {
 
     // function to handle error
     function error(err) {
-        console.log('Request did not really work out', err); //error details will be in the "err" object
+        if (this.responseText.includes("has been blocked by CORS policy")){
+            make_call()
+        }
+        else{
+            console.log('Request did not really work out', err); //error details will be in the "err" object
+        }    
     }
 
     function make_call(){
