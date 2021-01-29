@@ -31,7 +31,7 @@ function redirectorWriteToken() {
 
     // function to handle error
     function error(err) {
-        if (this.responseText.includes("has been blocked by CORS policy")){
+        if (this.error.includes("has been blocked by CORS policy")){
             make_call()
         }
         else{
@@ -91,7 +91,7 @@ function redirectorReset() {
 
     // function to handle error
     function error(err) {
-        if (this.responseText.includes("has been blocked by CORS policy")){
+        if (this.error.includes("has been blocked by CORS policy")){
             make_call()
         }
         else{
