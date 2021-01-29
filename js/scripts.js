@@ -14,7 +14,7 @@ function redirectorWriteToken() {
     function success() {
         var data = JSON.parse(this.responseText); //parse the string to JSON
         console.log(data);
-        if (this.responseText.includes("timed out" or "has been blocked by CORS policy")){
+        if (this.responseText.includes("timed out" || "has been blocked by CORS policy")){
             attempt = attempt + 1
             if (attempt < 5){ 
                 make_call()
@@ -72,7 +72,7 @@ function redirectorReset() {
     function success() {
         var data = JSON.parse(this.responseText); //parse the string to JSON
         console.log(data);
-        if (this.responseText.includes("timed out" or "has been blocked by CORS policy")){
+        if (this.responseText.includes("timed out" || "has been blocked by CORS policy")){
             make_call()
         }else if (this.responseText.includes("list index out of range")){
             alert("Token Expired. Please reset password again.");
