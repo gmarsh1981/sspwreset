@@ -14,18 +14,18 @@ function redirectorWriteToken() {
     function success() {
         var data = JSON.parse(this.responseText); //parse the string to JSON
         console.log(data);
-        if (this.responseText.includes("timed out" || "has been blocked by CORS policy")){
+        if (this.responseText.includes("timed out")){
             attempt = attempt + 1
             if (attempt < 5){ 
                 make_call()
             }else{
-                document.getElementById("result").innerHTML = "Reset Timed Out. Refresh page and please try again."
+                document.getElementById("result").innerHTML = "<span style='color: red;'>Reset Timed Out. Refresh page and please try again.</span>"
             }
-        }else if (this.responseText.includes("User not found")){
-            document.getElementById("result").innerHTML = "User not found. Please check username and email and try again. If information is correct please contact NOC."
+        }else if (this.responseText.includes("statuscode: 400")){
+            document.getElementById("result").innerHTML = "<span style='color: red;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
         }
         else{
-            document.getElementById("result").innerHTML = "Information has been successfully submitted."
+            document.getElementById("result").innerHTML = "<span style='color: green;'>Information has been successfully submitted.</span>"
         }
     }
 
@@ -72,21 +72,21 @@ function redirectorReset() {
     function success() {
         var data = JSON.parse(this.responseText); //parse the string to JSON
         console.log(data);
-        if (this.responseText.includes("timed out" || "has been blocked by CORS policy")){
+        if (this.responseText.includes("timed out")){
             make_call()
         }else if (this.responseText.includes("list index out of range")){
             alert("Token Expired. Please reset password again.");
-            window.location.replace("https://master.d1wxu3v9t21ve4.amplifyapp.com/")
+            window.location.replace("http://navcorinfs-sspw-website.s3-website-us-west-2.amazonaws.com/")
         }else{
-            document.getElementById("pw").value = data
-            document.getElementById("message").innerHTML = "Select copy, confirm that password is in your clipboard \nand enter temp password into Aloy Okta.";
+            document.getElementById("pw").value = data;
+            document.getElementById("message").innerHTML = "<span style='color: green;'>Select copy, confirm that password is in your clipboard \nand enter temp password into Aloy Okta.</span>"
         }
     }
 
     // function to handle error
     function error(err) {
         console.log('Request did not really work out', err); //error details will be in the "err" object  
-        document.getElementById("result").innerHTML = "Unable to submit information. Please contact NOC for further assistance."            
+        document.getElementById("result").innerHTML = "<span style='color: red;'>Unable to submit information. Please contact NOC for further assistance.</span>"            
     }
 
 
