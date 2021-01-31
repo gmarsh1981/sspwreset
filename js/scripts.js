@@ -86,7 +86,7 @@ function redirectorReset() {
     // function to handle error
     function error(err) {
         console.log('Request did not really work out', err); //error details will be in the "err" object  
-        document.getElementById("result").innerHTML = "<span style='color: red;'>Unable to submit information. Please contact NOC for further assistance.</span>"            
+        document.getElementById("message").innerHTML = "<span style='color: red;'>Unable to submit information. Please contact NOC for further assistance.</span>"            
     }
 
 
