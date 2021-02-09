@@ -75,7 +75,7 @@ function redirectorReset() {
         console.log(data);
         if (this.responseText.includes("timed out")){
             make_call()
-        }else if (this.responseText.includes("list index out of range")){
+        }else if (this.responseText.includes("Unable to validate Token")){
             alert("Token Expired. Please reset password again.");
             window.location.replace("http://navcorinfs-sspw-website.s3-website-us-west-2.amazonaws.com/")
         }else{
