@@ -21,17 +21,13 @@ function redirectorWriteToken() {
             }else{
                 document.getElementById("result").innerHTML = "<span style='color: red;'>Reset Timed Out. Refresh page and please try again.</span>"
             }
-        }
-        else if (this.responseText.includes("Unable to request password reset for user")){
-            document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
-        }
-        else if (this.responseText.includes("Missing required request parameters:")){
-            document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
-        }
-        else{
+        
+        if (this.responseText.includes("will be receiving an email with a link to retrieve temp password")){
             document.getElementById("result").innerHTML = "<span style='color: green;'>Information has been successfully submitted.</span>"
         }
-    }
+        else {
+            document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
+        }
 
     // function to handle error
     function error(err) {
