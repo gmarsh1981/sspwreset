@@ -25,6 +25,9 @@ function redirectorWriteToken() {
         else if (this.responseText.includes("Unable to request password reset for user")){
             document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
         }
+        else if (this.responseText.includes("Missing required request parameters")){
+            document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
+        }
         else{
             document.getElementById("result").innerHTML = "<span style='color: green;'>Information has been successfully submitted.</span>"
         }
