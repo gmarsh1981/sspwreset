@@ -3,8 +3,13 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)
     */
+
+var wheel = document.getElementById("loaderwheel");
+wheel.style.display = "none"
+
 function redirectorWriteToken() { 
-    document.getElementById("result").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
+    document.getElementById("result").innerHTML = "<span style='color: #067ec4;'>Sending Request...\nPlease allow up to 30 seconds.</style>";
+    wheel.style.display = 'block'
     var enduser = document.getElementById("uname").value
     var email = document.getElementById("email").value
     
@@ -19,16 +24,19 @@ function redirectorWriteToken() {
             if (attempt < 5){ 
                 make_call()
             }else{
+                wheel.style.display = 'none'
                 document.getElementById("result").innerHTML = "<span style='color: red;'>Reset Timed Out. Refresh page and please try again.</span>"
             }
         }
         
         if (this.responseText.includes("will be receiving an email with a link to retrieve temp password")){
+            wheel.style.display = 'none'
             document.getElementById("result").innerHTML = "<span style='color: green;'>Information has been successfully submitted.</span>"
         }else if (this.responseText.includes("timed out")){
             //do nothing
         }
         else {
+            wheel.style.display = 'none'
             document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
         }
     }
@@ -65,7 +73,8 @@ function copyFunction() {
 }
 
 function redirectorReset() { 
-    document.getElementById("message").innerHTML = "Sending Request...\nRequest can take up to 30 seconds, Please Wait.";
+    document.getElementById("message").innerHTML = "<span style='color: #067ec4;'>Sending Request...\nPlease allow up to 30 seconds.</style>";
+    wheel.style.display = 'block'
     var tokenURL = window.location.search
     urlParams = new URLSearchParams(tokenURL)
     var token = urlParams.get('token')
@@ -79,10 +88,12 @@ function redirectorReset() {
         if (this.responseText.includes("timed out")){
             make_call()
         }else if (this.responseText.includes("Unable to validate Token")){
+            wheel.style.display = 'none'
             alert("Token Expired. Please reset password again.");
             window.location.replace("http://navcorinfs-sspw-website.s3-website-us-west-2.amazonaws.com/")
         }else{
             document.getElementById("pw").value = data;
+            wheel.style.display = 'none'
             document.getElementById("message").innerHTML = "<span style='color: green;'>Select copy, confirm that password is in your clipboard \nand enter temp password into Aloy Okta.</span>"
         }
     }
