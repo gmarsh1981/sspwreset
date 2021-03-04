@@ -35,7 +35,7 @@ function redirectorWriteToken() {
         }
         else {
             
-            document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. Please check username and email and try again. If information is correct please contact NOC.</span>"
+            document.getElementById("result").innerHTML = "<span style='color: red;font-weight: bold;'>Unable to create password reset request. \nPlease check username and email and try again. \nIf information is correct please contact NOC.</span>"
         }
     }
 
